@@ -186,8 +186,8 @@ resource "aws_autoscaling_group" "master-eu-west-1c-masters-mybestsea-com" {
 resource "aws_autoscaling_group" "nodes-mybestsea-com" {
   name                 = "nodes.mybestsea.com"
   launch_configuration = "${aws_launch_configuration.nodes-mybestsea-com.id}"
-  max_size             = 3
-  min_size             = 3
+  max_size             = "${var.max_size}"
+  min_size             = "${var.min_size}"
   vpc_zone_identifier  = ["${aws_subnet.eu-west-1a-mybestsea-com.id}", "${aws_subnet.eu-west-1b-mybestsea-com.id}", "${aws_subnet.eu-west-1c-mybestsea-com.id}"]
 
   tag = {
